@@ -36,6 +36,14 @@ export const medicalRecordService = {
     return response.data;
   },
 
+  getByDoctor: async () => {
+    const token = localStorage.getItem("authToken");
+    const response = await apiClient.get("/medical-records/doctor", {
+      token: token,
+    });
+    return response.data;
+  },
+
   /**
    * 🔍 Mengambil detail satu rekam medis berdasarkan ID-nya.
    * @param {number} recordId - ID unik rekam medis.

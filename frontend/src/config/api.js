@@ -1,5 +1,5 @@
 // Ganti dari HTTPS ke HTTP untuk development
-const API_BASE_URL = "http://backend-secure.test/api";
+const API_BASE_URL = "https://api.curameet-secure.duckdns.org/";
 
 export const apiConfig = {
   baseURL: API_BASE_URL,

@@ -117,7 +117,7 @@ const JanjiTemu = () => {
         appointmentId,
         "Dibatalkan oleh pasien"
       );
-      console.log(result);
+      // console.log(result);
       if (result.success) {
         setSuccess("Janji temu berhasil dibatalkan");
         await loadInitialData(); // Muat ulang semua data

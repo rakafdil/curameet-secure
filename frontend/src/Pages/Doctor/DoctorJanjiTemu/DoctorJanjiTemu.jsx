@@ -58,7 +58,7 @@ const DoctorJanjiTemu = () => {
     try {
       const res = await appointmentService.getForDoctor(doctorNowData.id);
       setAppointments(res.appointments || []);
-      console.log(res.appointments);
+      // console.log(res.appointments);
     } catch (err) {
       console.error("Error fetching appointments:", err);
       setError("Gagal memuat data janji temu.");

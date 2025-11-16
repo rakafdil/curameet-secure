@@ -26,7 +26,7 @@ apiClient.interceptors.response.use(
 
     if (error.response?.status === 401) {
       // Handle unauthorized access
-      console.log("Unauthorized access, clearing auth data");
+      // console.log("Unauthorized access, clearing auth data");
       localStorage.removeItem("authToken");
       localStorage.removeItem("userInfo");
       localStorage.removeItem("isAuthenticated");

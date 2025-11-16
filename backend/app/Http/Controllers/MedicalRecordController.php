@@ -185,6 +185,40 @@ class MedicalRecordController extends Controller
 
         return response()->json($result);
     }
+    public function getByDoctor(Request $request)
+    {
+        // Ambil token dari header atau query
+        $authHeader = $request->header('Authorization');
+        $token = null;
+        if ($authHeader && preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
+            $token = $matches[1];
+        } elseif ($request->has('token')) {
+            $token = $request->query('token');
+        }
+        if (!$token) {
+            return response()->json(['success' => false, 'message' => 'Token not provided'], 401);
+        }
+
+        // Verifikasi user
+        $user = $this->authService->verifyToken($token);
+        if (!$user || $user->role !== 'doctor') {
+            return response()->json(['success' => false, 'message' => 'Unauthorized'], 403);
+        }
+
+        // Ambil doctorId dari user yang login
+        $doctor = \App\Models\Doctor::where('user_id', $user->id)->first();
+        if (!$doctor) {
+            return response()->json(['success' => false, 'message' => 'Doctor not found'], 404);
+        }
+        $doctorId = $doctor->id;
+
+        $result = $this->medicalRecordService->getRekamMedisByDoctor(
+            $doctorId,
+            $token
+        );
+
+        return response()->json($result);
+    }
 
     // Update method viewRekamMedisById di MedicalRecordController
     public function viewRekamMedisById(Request $request, $id)

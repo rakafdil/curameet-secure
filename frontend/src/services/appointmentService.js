@@ -50,7 +50,7 @@ export const appointmentService = {
       `/appointments/${appointmentId}/cancel`,
       { reason }
     );
-    console.log(response);
+    // console.log(response);
     return response.data;
   },
 
@@ -60,7 +60,7 @@ export const appointmentService = {
       doctor_id: doctorId,
       reason: reason,
     });
-    console.log(response);
+    // console.log(response);
     return response.data;
   },
 

@@ -297,7 +297,7 @@ const RekamMedis = () => {
                     {record.path_file &&
                     record.path_file.match(/\.(jpeg|jpg|png)$/i) ? (
                       <img
-                        src={`http://backend-secure.test/api/files/medical-records/${
+                        src={`https://api.curameet-secure.duckdns.org/api/files/medical-records/${
                           record.patient_id
                         }/${filename}?token=${localStorage.getItem(
                           "authToken"
@@ -338,7 +338,7 @@ const RekamMedis = () => {
                   <div className="p-4 border-t border-gray-200 mt-auto">
                     {record.path_file && (
                       <a
-                        href={`http://backend-secure.test/api/files/medical-records/${
+                        href={`https://api.curameet-secure.duckdns.org/api/files/medical-records/${
                           record.patient_id
                         }/${filename}?token=${localStorage.getItem(
                           "authToken"

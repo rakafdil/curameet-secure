@@ -64,6 +64,7 @@ Route::prefix('auth')->group(function () {
 //--- Doctor Routes ---//
 Route::prefix('doctors')->group(function () {
     Route::get('/', [DoctorController::class, 'listDoctors']);
+    Route::get('/patients-with-medical-record', [DoctorController::class, 'getPatientsWithMedicalRecord']);
     Route::get('/search', [DoctorController::class, 'getDoctorsByName']);
     Route::get('/{doctorId}', [DoctorController::class, 'getDoctorById']);
     Route::get('/user/{userId}', [DoctorController::class, 'getDoctorByUserId']);
@@ -109,6 +110,7 @@ Route::middleware('auth.token')->group(function () {
     //--- Medical Record Routes ---//
     Route::prefix('medical-records')->group(function () {
         Route::get('/patient', [MedicalRecordController::class, 'getRekamMedisByPatientId']);
+        Route::get('/patient', [MedicalRecordController::class, 'getByDoctor']);
         Route::get('/{id}', [MedicalRecordController::class, 'getRekamMedisById']);
 
 

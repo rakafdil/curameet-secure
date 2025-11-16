@@ -115,6 +115,7 @@ class MedicalRecordService
 
         return [
             'success' => true,
+            'patient_id' => $patientId,
             'records' => $records,
             'total_records' => $records->count()
         ];

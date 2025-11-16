@@ -12,8 +12,6 @@ class CorsMiddleware
         $allowedOrigins = [
             'http://localhost:3000',
             'http://backend-secure.test',
-            'https://curameet.duckdns.org',
-            'https://api.curameet.duckdns.org',
             'https://curameet-secure.duckdns.org',
             'https://api.curameet-secure.duckdns.org',
         ];
