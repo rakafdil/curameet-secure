@@ -9,6 +9,7 @@ class CorsMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
+
         $allowedOrigins = [
             'http://localhost:3000',
             'http://backend-secure.test',
@@ -20,8 +21,9 @@ class CorsMiddleware
 
         $headers = [
             'Access-Control-Allow-Methods' => 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers' => 'Origin, Content-Type, Accept, Authorization, X-Requested-With',
+            'Access-Control-Allow-Headers' => 'Origin, Content-Type, Accept, Authorization, X-Requested-With, X-CSRF-Token',
             'Access-Control-Allow-Credentials' => 'true',
+            'Access-Control-Max-Age' => '86400',
         ];
 
         if (in_array($origin, $allowedOrigins)) {
@@ -29,7 +31,7 @@ class CorsMiddleware
         }
 
         if ($request->getMethod() === 'OPTIONS') {
-            return response('OK', 200)->withHeaders($headers);
+            return response('', 204)->withHeaders($headers);
         }
 
         $response = $next($request);
@@ -38,11 +40,6 @@ class CorsMiddleware
             $response->headers->set($key, $value);
         }
 
-        if ($response->headers->has('Content-Security-Policy')) {
-            $response->headers->remove('Content-Security-Policy');
-        }
-
         return $response;
     }
 }
-
