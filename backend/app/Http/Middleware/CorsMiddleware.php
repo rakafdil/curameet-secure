@@ -11,8 +11,11 @@ class CorsMiddleware
     {
         $allowedOrigins = [
             'http://localhost:3000',
+            'http://backend-secure.test',
             'https://curameet.duckdns.org',
             'https://api.curameet.duckdns.org',
+            'https://curameet-secure.duckdns.org',
+            'https://api.curameet-secure.duckdns.org',
         ];
 
         $origin = $request->headers->get('Origin');
@@ -35,6 +38,10 @@ class CorsMiddleware
 
         foreach ($headers as $key => $value) {
             $response->headers->set($key, $value);
+        }
+
+        if ($response->headers->has('Content-Security-Policy')) {
+            $response->headers->remove('Content-Security-Policy');
         }
 
         return $response;
