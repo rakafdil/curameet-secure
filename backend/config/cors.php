@@ -10,9 +10,10 @@ return [
         'https://api.curameet-secure.duckdns.org'
     ],
 
-    'allowed_origins_patterns' => [],
-
-    'allowed_headers' => ['Origin', 'Content-Type', 'Accept', 'Authorization', 'X-Requested-With', 'X-CSRF-Token'],
+    'allowed_origins_patterns' => [
+        '/^https?:\/\/([a-z0-9-]+\.)?api.curameet-secure.duckdns\.org$/',
+    ],
+    'allowed_headers' => [''],
 
     'exposed_headers' => [],
 
