@@ -15,15 +15,16 @@ class CorsMiddleware
             'http://backend-secure.test',
             'https://curameet-secure.duckdns.org',
             'https://api.curameet-secure.duckdns.org',
+ 'http://curameet-secure.duckdns.org',
+            'http://api.curameet-secure.duckdns.org',
         ];
 
         $origin = $request->headers->get('Origin');
 
         $headers = [
             'Access-Control-Allow-Methods' => 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers' => 'Origin, Content-Type, Accept, Authorization, X-Requested-With, X-CSRF-Token',
+            'Access-Control-Allow-Headers' => 'Origin, Content-Type, Accept, Authorization, X-Requested-With',
             'Access-Control-Allow-Credentials' => 'true',
-            'Access-Control-Max-Age' => '86400',
         ];
 
         if (in_array($origin, $allowedOrigins)) {

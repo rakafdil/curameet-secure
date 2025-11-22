@@ -110,7 +110,7 @@ Route::middleware('auth.token')->group(function () {
     //--- Medical Record Routes ---//
     Route::prefix('medical-records')->group(function () {
         Route::get('/patient', [MedicalRecordController::class, 'getRekamMedisByPatientId']);
-        Route::get('/patient', [MedicalRecordController::class, 'getByDoctor']);
+        // Route::get('/patient', [MedicalRecordController::class, 'getByDoctor']);
         Route::get('/{id}', [MedicalRecordController::class, 'getRekamMedisById']);
 
 

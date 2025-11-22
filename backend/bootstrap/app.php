@@ -15,7 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         // run CORS before everything else
-        $middleware->prepend(HandleCors::class);
+        // $middleware->prepend(HandleCors::class);
 
         // Daftarkan middleware alias di sini
         $middleware->alias([
